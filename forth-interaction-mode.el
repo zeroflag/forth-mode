@@ -112,6 +112,7 @@
       (setq string (replace-match "" t t string))))
   (setq string (replace-regexp-in-string "\\`[[:space:]\n]*" "" string))
   (setq string (replace-regexp-in-string "[[:space:]\n]*\\'" "" string))
+  (setq string (replace-regexp-in-string "^#" "" string))
   (if keep-ok
       string
     (setq string (replace-regexp-in-string "ok\\'" "" string))
