@@ -67,7 +67,7 @@
   ;;(comint-output-filter proc (format "\nForth: %s\n" arg))
   )
 
-(defvar forth-executable nil)
+(defvar forth-executable "equinox")
 
 (defvar run-forth-hooks)
 
@@ -164,7 +164,7 @@
 (defun forth-load-file (file)
   (interactive (list (buffer-file-name (current-buffer))))
   (save-some-buffers)
-  (let ((result (forth-interaction-send-raw-result (format "s\" %s\" included" file))))
+  (let ((result (forth-interaction-send-raw-result (format "load-file %s" file))))
     (setq result (forth-scrub result t))
     (if (< (cl-count ?\n result) 2)
 	(message "%s" result)
